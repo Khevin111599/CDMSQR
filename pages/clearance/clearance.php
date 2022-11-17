@@ -96,7 +96,7 @@
                                                     {
                                                         echo '
                                                         <tr>
-                                                            <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                            <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
                                                             <td>'.$row['clearanceNo'].'</td>
                                                             <td>'.$row['residentname'].'</td>
                                                             <td>'.$row['barangay'].'</td>
@@ -104,11 +104,11 @@
                                                             <td>'.$row['purpose'].'</td>
                                                             <td>'.$row['orNo'].'</td>
                                                             <td>₱ '.number_format($row['samount'],2).'</td>
-                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             Edit</button>
 
 
-                                                            <a target="_blank" href="generate.php?resident='.$row['id'].'&clearance='.$row['clearanceNo'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
+                                                            <a target="_blank" href="generate.php?resident='.$row['pid'].'&clearance='.$row['clearanceNo'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 
@@ -133,7 +133,7 @@
                                                             <a target="_blank" href="generate.php?resident='.$row['residentid'].'&clearance='.$row['clearanceNo'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
-                                                        include "edit_modal.php";
+                                                          include "edit_modal.php";
                                                     }
                                                 }
                                                 ?>

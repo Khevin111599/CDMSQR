@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-md-5 col-xs-4" style="float:left;margin-top: -1px;">
                     <br>
-                    <image src="../../Picture/Permit.png" style="width:75%;height:150px;"/>
+                    <image src='<?php echo $_GET["qrdir"] ?>' style="width:75%;height:150px;"/>
                     </div>
                     <div class="col-md-5 col-xs-4" style="float:right;margin-top: -160px;">
                     	<br><br><br>

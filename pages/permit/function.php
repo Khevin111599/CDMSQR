@@ -1,4 +1,23 @@
 <?php
+include('../../assets/plugins/phpqrcode/qrlib.php');
+
+/**
+if (!file_exists($pngAbsoluteFilePath)) {
+    QRcode::png($codeContents, $pngAbsoluteFilePath);
+    echo 'File generated!';
+    echo '<hr />';
+} else {
+    echo 'File already generated! We can use this cached file to speed up site on common codes!';
+    echo '<hr />';
+}
+
+echo 'Server PNG File: '.$pngAbsoluteFilePath;
+echo '<hr />';
+
+// displaying
+echo '<img src="'.$urlRelativeFilePath.'" />';
+echo $visitLink; **/
+
 if(isset($_POST['btn_add'])){
     $ddl_resident = $_POST['ddl_resident'];
     $txt_busname = $_POST['txt_busname'];
@@ -8,6 +27,16 @@ if(isset($_POST['btn_add'])){
     $txt_amount = $_POST['txt_amount'];
     $date = date('jS \of F Y');
 
+    $localIP = getHostByName(getHostName());
+    $tempDir = "image/";
+
+    $visitLink = $localIP.'/trackingsystem/tracking/statustracking.php?qrcode='.$txt_ornum;
+    $fileName = ''.md5($txt_ornum).'.png';
+
+    $pngAbsoluteFilePath = $tempDir.$fileName;
+    $urlRelativeFilePath = $tempDir.$fileName;
+
+
     if(isset($_SESSION['role'])){
         $action = 'Added Permit with business name of '.$txt_busname;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
@@ -15,13 +44,15 @@ if(isset($_POST['btn_add'])){
 
     if($_SESSION['role'] == "Administrator")
     {
-    $query = mysqli_query($con,"INSERT INTO tblpermit (residentname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,status)
-        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','Approved')") or die('Error: ' . mysqli_error($con));
+    $query = mysqli_query($con,"INSERT INTO tblpermit (residentname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,qrlink,qrdir,status)
+        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
+        QRcode::png($visitLink, $pngAbsoluteFilePath);
     }
     else
     {
-      $query = mysqli_query($con,"INSERT INTO tblpermit (residentname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recorderid,recordedBy,status)
-        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['userid']."', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
+      $query = mysqli_query($con,"INSERT INTO tblpermit (residentname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recorderid,recordedBy,qrlink,qrdir,status)
+        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['userid']."', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
+        QRcode::png($visitLink, $pngAbsoluteFilePath);
     }
     if($query == true)
     {
@@ -42,30 +73,6 @@ if(isset($_POST['btn_req'])){
     if($reqquery == true)
     {
         header ("location: ".$_SERVER['REQUEST_URI']);
-    }
-}
-
-if(isset($_POST['btn_approve']))
-{
-    $txt_id = $_POST['hidden_id'];
-    $txt_ornum = $_POST['txt_ornum'];
-    $txt_amount = $_POST['txt_amount'];
-
-    $approve_query = mysqli_query($con,"UPDATE tblpermit set orNo = '".$txt_ornum."', samount = '".$txt_amount."',status = 'Approved'  where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
-
-    if($approve_query == true){
-        header("location: ".$_SERVER['REQUEST_URI']);
-    }
-}
-
-if(isset($_POST['btn_disapprove']))
-{
-    $txt_id = $_POST['hidden_id'];
-
-    $disapprove_query = mysqli_query($con,"UPDATE tblpermit set status = 'Disapproved'  where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
-
-    if($disapprove_query == true){
-        header("location: ".$_SERVER['REQUEST_URI']);
     }
 }
 

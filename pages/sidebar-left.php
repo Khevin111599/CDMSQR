@@ -131,6 +131,21 @@
 														</a>
 												</li>
                         </ul>';
+                    }elseif($_SESSION['role'] == "Mayor Secretary"){
+                        echo '
+                    <ul class="sidebar-menu">
+														<li>
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>Tracking</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../logout.php">
+                                    <i class="fa fa-history"></i> <span>Logout</span>
+                                </a>
+                            </li>
+
+                    </ul>';
                     }
                     else{
                         echo '

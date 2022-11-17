@@ -11,7 +11,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
+                                <div class="form-group" hidden>
                                     <label>Position:</label>
                                     <input name="ddl_pos" class="form-control input-sm" type="text" value="Secretary" readonly>
                                 </div>

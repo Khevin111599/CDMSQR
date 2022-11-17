@@ -47,7 +47,7 @@ else
                   if(!isset($_SESSION['staff']))
                   {
                     ?>
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" id="btndelete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                     <?php
                   }
                   ?>
@@ -84,11 +84,12 @@ else
                       {
 
                         $squery = mysqli_query($con, "select * from tblofficial ");
+                        $sendNewSms = "document.getElementById('sendNewSms').disabled = !this.checked;";
                         while($row = mysqli_fetch_array($squery))
                         {
                           echo '
                           <tr>
-                          <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                          <td><input type="checkbox" onchange="'.$sendNewSms.'" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'"  /></td>
                           <td>'.$row['sPosition'].'</td>
                           <td style="width:70px;"><image src="Official Images/'.basename($row['oimage']).'" style="width:60px;height:60px;"/></td>
                           <td>'.$row['completeName'].'</td>

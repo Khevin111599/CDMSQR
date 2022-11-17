@@ -30,7 +30,7 @@ session_start();
 </div>
 	<div class="right" >
 	<section class="banner">Sign In</section> </br> </br>
-	<Center><img src="Picture/Sta.Teresita.png" height="100" width="100" ></center>
+	<Center><img src="Picture/sta_rosa.png" height="100" width="100" ></center>
 	<form method="POST">
 			<input type="text" name="txt_username" required autofocus placeholder="Enter Username">
 			<input type="password" name="txt_password" required autofocus placeholder="Enter Password">
@@ -67,6 +67,12 @@ include('pages/connection.php');
 										$_SESSION['username'] = $loggedinuser['completeName'];
 										echo "<script>alert('Welcome.');</script>";
 									header ('location: pages/dashboard/dashboard.php');
+							}elseif($loggedinuser['sPosition'] == 'Mayor Secretary'){
+										$_SESSION['role'] = $loggedinuser['sPosition'];
+										$_SESSION['userid'] = $loggedinuser['id'];
+										$_SESSION['username'] = $loggedinuser['completeName'];
+										echo "<script>alert('Welcome.');</script>";
+										header ('location: pages/tracking/tracking.php');
 							}else{
 										$_SESSION['role'] = $loggedinuser['sPosition'];
 										$_SESSION['userid'] = $loggedinuser['id'];
