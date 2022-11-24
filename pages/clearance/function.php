@@ -3,7 +3,7 @@ if(isset($_POST['btn_add'])){
     $txt_cnum = $_POST['txt_cnum'];
     $ddl_resifname = $_POST['ddl_resifname'];
     $ddl_resimname = $_POST['ddl_resimname'];
-    $ddl_resilname = $_POST['ddl_reslnames'];
+    $ddl_resilname = $_POST['ddl_resilname'];
     $txt_findings = $_POST['txt_findings'];
     $txt_purpose = $_POST['txt_purpose'];
     $date = date('Y-m-d');
