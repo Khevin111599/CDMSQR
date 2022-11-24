@@ -107,8 +107,6 @@
                                                         <td>₱ '.number_format($row['samount'],2).'</td>
                                                         <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                         Edit</button>
-
-                                                        <a target="_blank" href="generate.php?resident='.$row['pid'].'&permit='.$row['businessName'].'&barangayName='.$row['barangay'].'&businessAddress='.$row['businessAddress'].'&recordDate='.$row['dateRecorded'].'&val='.base64_encode($row['businessName'].'|'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 

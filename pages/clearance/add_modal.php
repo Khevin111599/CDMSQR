@@ -21,19 +21,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label>First Name:</label>
-                                    <input name="ddl_resifname" class="form-control input-sm" type="text" placeholder="First Name"/>
+                                    <input name="ddl_resifname" class="form-control input-sm" type="text" placeholder="First Name" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Middle Name:</label>
-                                    <input name="ddl_resimname" class="form-control input-sm" type="text" placeholder="Middle Name"/>
+                                    <input name="ddl_resimname" class="form-control input-sm" type="text" placeholder="Middle Name" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name:</label>
-                                    <input name="ddl_resilname" class="form-control input-sm" type="text" placeholder="Last Name"/>
+                                    <input name="ddl_resilname" class="form-control input-sm" type="text" placeholder="Last Name" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Findings:</label>
-                                    <input name="txt_findings" class="form-control input-sm" type="text" placeholder="Findings"/>
+                                    <input name="txt_findings" class="form-control input-sm" type="text" placeholder="Findings" required/>
                                 </div>
                                 <div class="form-group">
                                     <label>Purpose:</label>

@@ -101,7 +101,6 @@
                                                             <td>'.$row['findings'].'</td>
                                                             <td>'.$row['purpose'].'</td>
                                                             <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
-                                                            <a target="_blank" href="generate.php?resident='.$row['pid'].'&clearance='.$row['clearanceNo'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 

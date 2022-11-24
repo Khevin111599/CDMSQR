@@ -50,7 +50,7 @@
                       <p style="text-indent:40px;text-align: justify;">This is to certify that
                      <?php $qry1=mysqli_query($con,"SELECT * from tblclearance where id = '".$_GET['resident']."' and clearanceNo = '".$_GET['clearance']."'");
                               while($row1 = mysqli_fetch_array($qry1)){
-                      echo '<b>'.$row1['residentname'].'</b>';
+                      echo '<b>'.$row1['resilname'].', '.$row1['resifname'].' '.$row1['resimname'].'</b>';
                       }
                       ?>
                    whose photo, signature and right thumb mark appear herein, is a resident of Barangay <?php echo $_GET['barangayName'] ?>, Santa Rosa, Nueva Ecija and that the person had requested a criminal check from this office following is/are our findings.</p>
