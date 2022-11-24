@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2022 at 06:48 PM
+-- Generation Time: Nov 24, 2022 at 04:46 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -80,11 +80,11 @@ CREATE TABLE `tblblotter` (
 CREATE TABLE `tblclearance` (
   `id` int(11) NOT NULL,
   `clearanceNo` int(11) NOT NULL,
-  `residentname` varchar(50) NOT NULL,
+  `resifname` varchar(50) NOT NULL,
+  `resimname` varchar(50) NOT NULL,
+  `resilname` varchar(50) NOT NULL,
   `findings` text NOT NULL,
   `purpose` text NOT NULL,
-  `orNo` int(11) NOT NULL,
-  `samount` int(11) NOT NULL,
   `dateRecorded` date NOT NULL,
   `recorderid` int(11) NOT NULL,
   `recordedBy` varchar(50) NOT NULL,
@@ -95,18 +95,12 @@ CREATE TABLE `tblclearance` (
 -- Dumping data for table `tblclearance`
 --
 
-INSERT INTO `tblclearance` (`id`, `clearanceNo`, `residentname`, `findings`, `purpose`, `orNo`, `samount`, `dateRecorded`, `recorderid`, `recordedBy`, `status`) VALUES
-(1, 1212, '2', 'DFDS', '', 232, 2323, '2022-11-05', 0, 'admin', 'Approved'),
-(2, 2, 'test test', 'None', 'None', 3545444, 200, '2022-11-09', 0, '', 'Approved'),
-(3, 3, 'asdadasdasdas', 'asdas', 'asdas', 3434, 3434, '2022-11-09', 0, 'admin', 'Approved'),
-(4, 2131, 'dasdasd', 'ada', 'asdas', 6765, 121, '2022-11-09', 0, 'admin', 'Approved'),
-(5, 1123, 'dadada', 'asda', 'asdasdas', 43434, 2334, '2022-11-09', 17, 'secretary1', 'New'),
-(6, 2322, 'Bruno Mars', 'sdfsd', 'sdfsdf', 454, 123, '2022-11-09', 17, 'Secretary One', 'New'),
-(7, 312321, 'Justin Timberlake', 'None', 'None', 2323, 200, '2022-11-09', 18, 'Secretary Two', 'New'),
-(8, 123, 'sdfs', 'adaf', 'adfs', 34234, 324, '2022-11-10', 19, 'Secretary Three', 'New'),
-(9, 121, 'Name Name', 'Findings', 'Purpose', 2332, 200, '2022-11-11', 17, 'Secretary One', 'New'),
-(10, 234, 'dfsdf', 'sdfsdf', 'sdfsd', 434, 234, '2022-11-11', 18, 'Secretary Two', 'New'),
-(100000, 1, 'sad', 'asd', 'sd', 0, 232, '2022-11-11', 0, 'Administrator', 'Approved');
+INSERT INTO `tblclearance` (`id`, `clearanceNo`, `resifname`, `resimname`, `resilname`, `findings`, `purpose`, `dateRecorded`, `recorderid`, `recordedBy`, `status`) VALUES
+(100005, 23432, 'FDSFDSF', '', '', 'ADASD', 'asdas', '0000-00-00', 0, '', ''),
+(100007, 100006, 'asd', '', '', 'asd', 'asdasd', '2022-11-24', 25, '', 'New'),
+(100013, 100012, 'sdf', '', '', 'sdfs', 'dsfds', '2022-11-24', 25, '', 'New'),
+(100015, 100013, 'asd', '', '', 'asdasd', 'Purpose 2', '2022-11-24', 25, '', 'New'),
+(100016, 100015, 'Juan', 'Luna', 'Cruz', 'None', 'Purpose 2', '2022-11-24', 25, '', 'New');
 
 -- --------------------------------------------------------
 
@@ -203,7 +197,79 @@ INSERT INTO `tbllogs` (`id`, `user`, `logdate`, `action`) VALUES
 (63, 'Secretary', '2022-11-11 01:16:46', 'Update Permit with business name of Ponzi'),
 (64, 'Secretary', '2022-11-11 01:17:17', 'Update Permit with business name of Ponzi'),
 (65, 'Secretary', '2022-11-11 01:19:38', 'Added Permit with business name of Business Name'),
-(66, 'Administrator', '2022-11-11 01:38:16', 'Added Clearance with clearance number of 1');
+(66, 'Administrator', '2022-11-11 01:38:16', 'Added Clearance with clearance number of 1'),
+(67, 'Administrator', '2022-11-14 16:28:19', 'Added Clearance with clearance number of 1'),
+(68, 'Administrator', '2022-11-14 16:28:28', 'Added Clearance with clearance number of 43434'),
+(69, 'Administrator', '2022-11-14 16:31:06', 'Added Permit with business name of asdasd'),
+(70, 'Administrator', '2022-11-14 16:36:58', 'Update Clearance with clearance number of 11'),
+(71, 'Administrator', '2022-11-14 16:39:00', 'Update Clearance with clearance number of 11'),
+(72, 'Administrator', '2022-11-14 16:43:50', 'Update Clearance with clearance number of 11'),
+(73, 'Administrator', '2022-11-14 16:45:26', 'Update Clearance with clearance number of 1121221'),
+(74, 'Administrator', '2022-11-14 17:16:04', 'Added Official named asddddasd'),
+(75, 'Administrator', '2022-11-14 17:46:45', 'Added Official named asdsad'),
+(76, 'Administrator', '2022-11-17 21:27:56', 'Added Permit with business name of rerer'),
+(77, 'Administrator', '2022-11-17 21:29:45', 'Added Permit with business name of terter'),
+(78, 'Administrator', '2022-11-17 21:32:47', 'Added Permit with business name of asdasd'),
+(79, 'Administrator', '2022-11-17 21:35:05', 'Added Permit with business name of asdsa'),
+(80, 'Administrator', '2022-11-17 21:35:46', 'Added Permit with business name of asdasd'),
+(81, 'Administrator', '2022-11-17 21:39:25', 'Added Permit with business name of sdfsd'),
+(82, 'Secretary', '2022-11-17 22:08:57', 'Added Permit with business name of Vulcanizing Shop'),
+(83, 'Secretary', '2022-11-17 22:09:40', 'Added Permit with business name of Vulcanizing Shop'),
+(84, 'Secretary', '2022-11-17 22:10:24', 'Added Permit with business name of Vulcanizing Shop'),
+(85, 'Secretary', '2022-11-17 22:17:06', 'Added Permit with business name of Vulcanizing Shop'),
+(86, 'Secretary', '2022-11-17 23:13:11', 'Added Permit with business name of Pharmacy'),
+(87, 'Secretary', '2022-11-17 23:15:20', 'Added Permit with business name of Pharmacy'),
+(88, 'Mayor Secretary', '2022-11-18 00:19:01', 'Approve Permit with business name of '),
+(89, 'Mayor Secretary', '2022-11-18 00:19:52', 'Disapprove Permit with business name of '),
+(90, 'Mayor Secretary', '2022-11-18 00:19:59', 'Approve Permit with business name of '),
+(91, 'Secretary', '2022-11-18 00:24:25', 'Added Permit with business name of Vulcanizing Shop'),
+(92, 'Secretary', '2022-11-18 01:00:33', 'Added Permit with business name of Pharmacy'),
+(93, 'Mayor Secretary', '2022-11-18 01:01:46', 'Approve Permit with business name of '),
+(94, 'Mayor Secretary', '2022-11-18 01:01:51', 'Disapprove Permit with business name of '),
+(95, 'Secretary', '2022-11-18 02:28:25', 'Added Permit with business name of Vulcanizing Shop'),
+(96, 'Secretary', '2022-11-21 14:14:50', 'Added Permit with business name of Pharmacy'),
+(97, 'Mayor Secretary', '2022-11-21 14:15:50', 'Approve Permit with business name of '),
+(98, 'Mayor Secretary', '2022-11-21 14:15:58', 'Disapprove Permit with business name of '),
+(99, 'Administrator', '2022-11-24 05:43:09', 'Added Official named asdasd, asdasd asdsad'),
+(100, 'Administrator', '2022-11-24 05:45:37', 'Added Official named asdasd, asdasd asdsad'),
+(101, 'Administrator', '2022-11-24 05:45:53', 'Added Official named asdasd, asdasd sadsa'),
+(102, 'Administrator', '2022-11-24 05:46:26', 'Added Official named asdsad, asdasd asdasd'),
+(103, 'Administrator', '2022-11-24 09:04:46', 'Added Official named Jovic, Small Nikola'),
+(104, 'Administrator', '2022-11-24 09:05:36', 'Added Official named Jovic, Small Nikola'),
+(105, 'Administrator', '2022-11-24 09:47:01', 'Update Official named Jovic, Jovic Power'),
+(106, 'Administrator', '2022-11-24 09:47:36', 'Update Official named Jovic, Jovic Power'),
+(107, 'Administrator', '2022-11-24 09:48:12', 'Update Official named Jovic, Jovic Power'),
+(108, 'Administrator', '2022-11-24 09:49:31', 'Update Official named Jovic, Jovic Power'),
+(109, 'Administrator', '2022-11-24 09:50:16', 'Update Official named Jovic, Jovic Power'),
+(110, 'Administrator', '2022-11-24 09:52:59', 'Added Official named Herro, Point Tyler'),
+(111, 'Administrator', '2022-11-24 09:53:54', 'Update Official named Herro, Herro Point'),
+(112, 'Administrator', '2022-11-24 09:54:28', 'Update Official named Jovic, Jovic Power'),
+(113, 'Administrator', '2022-11-24 09:54:35', 'Update Official named Herro, Herro Point'),
+(114, 'Secretary', '2022-11-24 10:15:47', 'Added Clearance with clearance number of 23323'),
+(115, 'Secretary', '2022-11-24 10:16:59', 'Added Clearance with clearance number of 23323'),
+(116, 'Secretary', '2022-11-24 10:24:00', 'Added Clearance with clearance number of 100001'),
+(117, 'Secretary', '2022-11-24 10:24:13', 'Added Clearance with clearance number of 100003'),
+(118, 'Secretary', '2022-11-24 10:29:25', 'Added Clearance with clearance number of 32323'),
+(119, 'Secretary', '2022-11-24 10:31:02', 'Added Clearance with clearance number of 100006'),
+(120, 'Secretary', '2022-11-24 10:31:19', 'Added Clearance with clearance number of 100007'),
+(121, 'Secretary', '2022-11-24 10:32:48', 'Added Clearance with clearance number of 100007'),
+(122, 'Secretary', '2022-11-24 10:32:55', 'Added Clearance with clearance number of 100008'),
+(123, 'Secretary', '2022-11-24 10:53:27', 'Added Clearance with clearance number of 100008'),
+(124, 'Secretary', '2022-11-24 10:53:30', 'Added Clearance with clearance number of 100010'),
+(125, 'Secretary', '2022-11-24 10:53:34', 'Added Clearance with clearance number of 100011'),
+(126, 'Secretary', '2022-11-24 10:53:37', 'Added Clearance with clearance number of 100012'),
+(127, 'Secretary', '2022-11-24 11:15:42', 'Added Clearance with clearance number of 100013'),
+(128, 'Secretary', '2022-11-24 11:18:48', 'Added Clearance with clearance number of 100013'),
+(129, 'Secretary', '2022-11-24 11:19:22', 'Update Clearance with clearance number of 100013'),
+(130, 'Secretary', '2022-11-24 11:31:41', 'Added Clearance with clearance number of 100015'),
+(131, 'Secretary', '2022-11-24 11:41:05', 'Update Clearance with clearance number of 100015'),
+(132, 'Secretary', '2022-11-24 11:55:13', 'Added Permit with business name of Leon Sari Sari Store'),
+(133, 'Administrator', '2022-11-24 12:50:12', 'Added Permit with business name of Juan Convenience Store'),
+(134, 'Administrator', '2022-11-24 12:50:19', 'Update Permit with business name of Juan Convenience Storee'),
+(135, 'Administrator', '2022-11-24 12:50:26', 'Update Permit with business name of Juan Convenience Store'),
+(136, 'Secretary', '2022-11-24 12:55:49', 'Added Permit with business name of Sacate Fruit Store'),
+(137, 'Secretary', '2022-11-24 13:04:31', 'Added Permit with business name of Juan Sari Sari Store'),
+(138, 'Administrator', '2022-11-24 15:58:08', 'Added Clearance with clearance number of 100016');
 
 -- --------------------------------------------------------
 
@@ -215,23 +281,29 @@ CREATE TABLE `tblofficial` (
   `id` int(11) NOT NULL,
   `sPosition` varchar(50) NOT NULL,
   `oimage` text NOT NULL,
-  `completeName` text NOT NULL,
-  `pcontact` varchar(20) NOT NULL,
+  `fname` text NOT NULL,
+  `mname` text NOT NULL,
+  `lname` text NOT NULL,
   `paddress` text NOT NULL,
+  `cptfname` text NOT NULL,
+  `cptmname` text NOT NULL,
+  `cptlname` text NOT NULL,
+  `pcontact` bigint(20) NOT NULL,
+  `pemail` text NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `captain` varchar(25) NOT NULL
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblofficial`
 --
 
-INSERT INTO `tblofficial` (`id`, `sPosition`, `oimage`, `completeName`, `pcontact`, `paddress`, `username`, `password`, `captain`) VALUES
-(15, 'Administrator', '', 'Administrator', '', '', 'admin', 'admin', ''),
-(17, 'Secretary', '', 'Secretary One', '1000000', 'Aguinaldo', 'secretary1', 'pass', 'Captain One'),
-(18, 'Secretary', '', 'Secretary Two', '00000000', 'La Fuente', 'secretary2', 'pass', 'Captain Two'),
-(19, 'Secretary', '', 'Secretary Three', '54654654', 'Berang', 'secretary3', 'pass', 'Captain Three');
+INSERT INTO `tblofficial` (`id`, `sPosition`, `oimage`, `fname`, `mname`, `lname`, `paddress`, `cptfname`, `cptmname`, `cptlname`, `pcontact`, `pemail`, `username`, `password`) VALUES
+(1, 'Administrator', '', 'Administrator', '', '', '', '', '', '', 0, '', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+(22, 'Mayor Secretary', '', 'Mayor Secretary', '', '', '', '', '', '', 0, '', 'mayorsec1', '32250170a0dca92d53ec9624f336ca24'),
+(23, 'Secretary', '', 'asdasd', 'asdasd', 'asdsad', 'asdasdasd', 'asdas', 'asdasd', 'asdasd', 342, '', 'asdasd', '32250170a0dca92d53ec9624f336ca24'),
+(24, 'Secretary', '', 'Nikola', 'Small', 'Jovic', 'asdasdsad', 'Jimmy', 'Power', 'Butler', 956115455, 'nikolajovic@gmail.com', 'NJovic6654', '32250170a0dca92d53ec9624f336ca24'),
+(25, 'Secretary', '', 'Tyler', 'Point', 'Herro', 'Addressss', 'Kyle', 'Point', 'Lowry', 956445458, 'kylelowry@gmail.com', 'THerro5545', '32250170a0dca92d53ec9624f336ca24');
 
 -- --------------------------------------------------------
 
@@ -241,7 +313,9 @@ INSERT INTO `tblofficial` (`id`, `sPosition`, `oimage`, `completeName`, `pcontac
 
 CREATE TABLE `tblpermit` (
   `id` int(11) NOT NULL,
-  `residentname` varchar(50) NOT NULL,
+  `resifname` varchar(50) NOT NULL,
+  `resimname` varchar(50) NOT NULL,
+  `resilname` varchar(50) NOT NULL,
   `businessName` text NOT NULL,
   `businessAddress` text NOT NULL,
   `typeOfBusiness` varchar(50) NOT NULL,
@@ -250,6 +324,8 @@ CREATE TABLE `tblpermit` (
   `dateRecorded` varchar(25) NOT NULL,
   `recorderid` int(11) NOT NULL,
   `recordedBy` varchar(50) NOT NULL,
+  `qrlink` varchar(100) NOT NULL,
+  `qrdir` varchar(100) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -257,12 +333,8 @@ CREATE TABLE `tblpermit` (
 -- Dumping data for table `tblpermit`
 --
 
-INSERT INTO `tblpermit` (`id`, `residentname`, `businessName`, `businessAddress`, `typeOfBusiness`, `orNo`, `samount`, `dateRecorded`, `recorderid`, `recordedBy`, `status`) VALUES
-(1, 'test test', 'testr', 'cabanatuan city', 'Sole Proprietorship', 34343, 222, '2022-11-09', 0, '', 'Approved'),
-(7, 'Justin Timberlake', 'Entrepreneur', 'Cabanatuan CIty', 'Partnership', 5454, 200, '2022-11-09', 18, 'Secretary Two', 'New'),
-(12, 'Ricky Montgomery', 'Ponzi', 'Gapan City', 'Sole Proprietorship', 66666, 200, '11th of November 2022', 17, 'Secretary One', 'New'),
-(13, 'test test', 'Ponzi', 'Gapan City', 'Partnership', 3434, 200, '11th of November 2022', 17, 'Secretary One', 'New'),
-(14, 'Name Name', 'Business Name', 'La Fuente', 'Partnership', 34343, 200, '11th of November 2022', 17, 'Secretary One', 'New');
+INSERT INTO `tblpermit` (`id`, `resifname`, `resimname`, `resilname`, `businessName`, `businessAddress`, `typeOfBusiness`, `orNo`, `samount`, `dateRecorded`, `recorderid`, `recordedBy`, `qrlink`, `qrdir`, `status`) VALUES
+(33, 'Juan', 'Gomez', 'Dela Cruz', 'Juan Sari Sari Store', 'Sta Rosa', 'Sari Sari Store', 252252, 200, '24th of November 2022', 25, 'Herro, Tyler Point', '192.168.1.12/trackingsystem/tracking/statustracking.php?qrcode=252252', 'image/4ff05e91817dbc815a4da1b3acf28a48.png', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -290,7 +362,8 @@ INSERT INTO `tblresidency` (`id`, `residencyNo`, `residentname`, `findings`, `Ro
 (1, 1212, 'asdsad', 'DFDS', 232, '2022-11-10', 15, '', '2323'),
 (2, 12222, 'zsdas', 'asd', 23, '2022-11-10', 15, '', 'asdsadsa'),
 (3, 23, 'dsfdsfs', 'sdfdsf', 324, '2022-11-10', 15, '', '223'),
-(4, 1231, 'asdad', 'asd', 234, '2022-11-10', 17, '', 'sdfsdf');
+(4, 1231, 'asdad', 'asd', 234, '2022-11-10', 17, '', 'sdfsdf'),
+(5, 43434, 'sdfsf', 'df', 65656565, '2022-11-14', 15, '', 'sdfsd');
 
 -- --------------------------------------------------------
 
@@ -345,7 +418,8 @@ CREATE TABLE `tbluser` (
 INSERT INTO `tbluser` (`id`, `username`, `password`, `type`) VALUES
 (1, 'admin', 'admin', 'administrator'),
 (3, 'secretary1', 'pass', 'secretary'),
-(4, 'secretary2', 'pass', 'secretary');
+(4, 'secretary2', 'pass', 'secretary'),
+(5, 'mayorsec', 'pass', 'mayorsecretary');
 
 --
 -- Indexes for dumped tables
@@ -443,7 +517,7 @@ ALTER TABLE `tblblotter`
 -- AUTO_INCREMENT for table `tblclearance`
 --
 ALTER TABLE `tblclearance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100001;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100018;
 
 --
 -- AUTO_INCREMENT for table `tblhousehold`
@@ -455,25 +529,25 @@ ALTER TABLE `tblhousehold`
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `tblofficial`
 --
 ALTER TABLE `tblofficial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tblpermit`
 --
 ALTER TABLE `tblpermit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tblresidency`
 --
 ALTER TABLE `tblresidency`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblresident`
@@ -485,7 +559,7 @@ ALTER TABLE `tblresident`
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

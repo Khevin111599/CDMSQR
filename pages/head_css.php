@@ -18,4 +18,5 @@
     <link href="../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../../css/select2.css" rel="stylesheet" type="text/css" />
     <script src="../../js/jquery-1.12.3.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="../../Icon/sta_rosa.png">
 </head>

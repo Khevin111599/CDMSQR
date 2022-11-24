@@ -1,4 +1,8 @@
-  <!-- ========================= MODAL ======================= -->
+<?php
+  $squery = mysqli_query($con, "SELECT id FROM tblclearance ORDER BY id DESC LIMIT 1");
+  $result = mysqli_fetch_array($squery);
+?>
+<!-- ========================= MODAL ======================= -->
             <div id="addModal" class="modal fade">
             <form method="post">
               <div class="modal-dialog modal-sm" style="width:300px !important;">
@@ -13,11 +17,19 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Clearance #:</label>
-                                    <input name="txt_cnum" class="form-control input-sm" type="number" placeholder="Clearance #"/>
+                                    <input name="txt_cnum" class="form-control input-sm" type="number" value="<?php echo $result['id'] ?>" placeholder="Clearance #" readOnly/>
                                 </div>
                                 <div class="form-group">
-                                    <label>Resident:</label>
-                                    <input name="ddl_resident" class="form-control input-sm" type="text" placeholder="Resident Name"/>
+                                    <label>First Name:</label>
+                                    <input name="ddl_resifname" class="form-control input-sm" type="text" placeholder="First Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Middle Name:</label>
+                                    <input name="ddl_resimname" class="form-control input-sm" type="text" placeholder="Middle Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input name="ddl_resilname" class="form-control input-sm" type="text" placeholder="Last Name"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Findings:</label>
@@ -25,15 +37,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Purpose:</label>
-                                    <input name="txt_purpose" class="form-control input-sm" type="text" placeholder="Purpose"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>OR Number:</label>
-                                    <input name="txt_ornum" class="form-control input-sm" type="number" placeholder="OR Number"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>Amount:</label>
-                                    <input name="txt_amount" class="form-control input-sm" type="number" placeholder="Amount"/>
+                                    <select name="txt_purpose" class="form-select form-control" required>
+                                        <option selected value="" >-----------</option>
+                                        <option value="Purpose 1">Purpose 1</option>
+                                        <option value="Purpose 2">Purpose 2</option>
+                                        <option value="Purpose 3">Purpose 3</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

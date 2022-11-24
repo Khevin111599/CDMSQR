@@ -12,7 +12,7 @@
                 <input type="hidden" value="'.$row['pid'].'" name="hidden_id" id="hidden_id"/>
                 <div class="form-group">
                     <label>Resident: </label>
-                    <input class="form-control input-sm" type="text" value="'.$row['residentname'].'" readonly/>
+                    <input class="form-control input-sm" type="text" value="'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'" readonly/>
                 </div>
                 <div class="form-group">
                     <label>Business Name: </label>
@@ -34,11 +34,11 @@
                 </div>
                 <div class="form-group">
                     <label>OR Number : </label>
-                    <input name="txt_edit_ornum" class="form-control input-sm" type="text" value="'.$row['orNo'].'" />
+                    <input name="txt_edit_ornum" class="form-control input-sm" type="text" onkeydown="return event.keyCode !== 69" value="'.$row['orNo'].'" />
                 </div>
                 <div class="form-group">
                     <label>Amount : </label>
-                    <input name="txt_edit_amount" class="form-control input-sm" type="text" value="'.$row['samount'].'" />
+                    <input name="txt_edit_amount" class="form-control input-sm" type="text" onkeydown="return event.keyCode !== 69" value="'.$row['samount'].'" />
                 </div>
             </div>
         </div>

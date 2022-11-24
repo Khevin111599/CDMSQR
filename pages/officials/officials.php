@@ -28,7 +28,7 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Barangay Accounts
+            User Accounts
           </h1>
 
         </section>
@@ -56,7 +56,7 @@ else
               </div><!-- /.box-header -->
               <div class="box-body table-responsive">
                 <form method="post">
-                  <table id="table" class="table table-bordered table-striped">
+                  <table id="table" class="table table-bordered table-striped" style="table-layout:fixed;">
                     <thead>
                       <tr>
                         <?php
@@ -73,7 +73,7 @@ else
                         <th>Contact</th>
                         <th>Address</th>
                         <th>Username</th>
-                        <th>Password</th>
+                        <th style="width:80px;">Password</th>
                         <th>Captain</th>
                         <th style="width: 130px !important;">Option</th>
                       </tr>
@@ -83,7 +83,7 @@ else
                       if(!isset($_SESSION['staff']))
                       {
 
-                        $squery = mysqli_query($con, "select * from tblofficial ");
+                        $squery = mysqli_query($con, "select * from tblofficial WHERE id > 1");
                         $sendNewSms = "document.getElementById('sendNewSms').disabled = !this.checked;";
                         while($row = mysqli_fetch_array($squery))
                         {
@@ -92,15 +92,14 @@ else
                           <td><input type="checkbox" onchange="'.$sendNewSms.'" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'"  /></td>
                           <td>'.$row['sPosition'].'</td>
                           <td style="width:70px;"><image src="Official Images/'.basename($row['oimage']).'" style="width:60px;height:60px;"/></td>
-                          <td>'.$row['completeName'].'</td>
+                          <td>'.$row['lname'].', '.$row['fname'].' '.$row['mname'].'</td>
                           <td>'.$row['pcontact'].'</td>
                           <td>'.$row['paddress'].'</td>
                           <td>'.$row['username'].'</td>
-                          <td>'.$row['password'].'</td>
-                          <td>'.$row['captain'].'</td>
+                          <td style="overflow:hidden;">'.$row['password'].'</td>
+                          <td>'.$row['cptlname'].', '.$row['cptfname'].' '.$row['cptmname'].'</td>
                           <td>
-                          <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                          <button class="btn btn-primary btn-sm" data-target="#viewModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-eye" aria-hidden="true"></i> View</button>';
+                          <button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</button>';
 
                           echo '</td>
 

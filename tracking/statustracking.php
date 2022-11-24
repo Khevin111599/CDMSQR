@@ -13,7 +13,7 @@ echo "Error, Please try again.";
 ?>
  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
  <meta name="viewport" content="width=device-width, initial-scale=1">
- 	<br/><Center><img src="../Picture/sta_rosa.png" height="180" width="180" ></center><br/><br/>
+ 	<br/><center><img src="../Picture/sta_rosa.png" height="180" width="180" ></center><br/><br/>
 <div class="row">
     <div class="col-md-12" style="padding-left:30px; padding-right:30px;">
         <div class="form-group">
@@ -22,7 +22,7 @@ echo "Error, Please try again.";
         </div>
         <div class="form-group">
             <label>Doc Name:</label>
-            <input name="txt_busname" class="form-control input-sm" type="text" value="<?php echo $row['residentname']; ?>" placeholder="Doc Name" readonly/>
+            <input name="txt_busname" class="form-control input-sm" type="text" value="<?php echo $row['resilname'].', '.$row['resifname'].' '.$row['resimname']; ?>" placeholder="Doc Name" readonly/>
         </div>
         <div class="form-group">
             <label>Issued By:</label>

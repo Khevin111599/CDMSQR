@@ -93,7 +93,7 @@ else
                                 echo '
                                 <tr>
                                 <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
-                                <td>'.$row['residentname'].'</td>
+                                <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                 <td>'.$row['businessName'].'</td>
                                 <td>'.$row['businessAddress'].'</td>
                                 <td>'.$row['typeOfBusiness'].'</td>

@@ -1,27 +1,36 @@
 <?php
 if(isset($_POST['btn_add'])){
     $ddl_pos = $_POST['ddl_pos'];
-    $txt_cname = $_POST['txt_cname'];
-    $txt_contact = $_POST['txt_contact'];
+    $txt_fname = $_POST['txt_fname'];
+    $txt_mname = $_POST['txt_mname'];
+    $txt_lname = $_POST['txt_lname'];  
     $txt_address = $_POST['txt_address'];
-    $txt_sterm = $_POST['txt_sterm'];
-    $txt_eterm = $_POST['txt_eterm'];
-    $txt_captain = $_POST['txt_captain'];
-
+    $txt_cptfname = $_POST['txt_cptfname'];
+    $txt_cptmname = $_POST['txt_cptmname'];
+    $txt_cptlname = $_POST['txt_cptlname'];
+    $txt_contact = $_POST['txt_contact'];
+    $txt_emailadd = $_POST['txt_emailadd'];
+    $txt_uname = substr($txt_fname, 0, 1).$txt_lname.substr($txt_contact, -4);
+    $txt_pass = md5("pass123");
+    
     if(isset($_SESSION['role'])){
-        $action = 'Added Official named '.$txt_cname;
+        $action = 'Added Official named '.$txt_lname.', '.$txt_mname.' '.$txt_fname;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
-
         $query = mysqli_query($con,"INSERT INTO tblofficial (
                                                 sPosition,
-                                                completeName,
-                                                pcontact,
+                                                fname,
+                                                mname,
+                                                lname,
                                                 paddress,
+                                                cptfname,
+                                                cptmname,
+                                                cptlname,
+                                                pcontact,
+                                                pemail,                                                
                                                 username,
-                                                password,
-                                                captain)
-                                                values ( '$ddl_pos', '$txt_cname', '$txt_contact', '$txt_address', '$txt_sterm', '$txt_eterm', '$txt_captain')") or die('Error: ' . mysqli_error($con));
+                                                password)
+                                                values ( '$ddl_pos', '$txt_fname', '$txt_mname', '$txt_lname', '$txt_address', '$txt_cptfname', '$txt_cptmname', '$txt_cptlname', '$txt_contact', '$txt_emailadd', '$txt_uname', '$txt_pass')") or die('Error: ' . mysqli_error($con));
         if($query == true)
         {
             $_SESSION['added'] = 1;
@@ -33,25 +42,34 @@ if(isset($_POST['btn_add'])){
 if(isset($_POST['btn_save']))
 {
     $txt_id = $_POST['hidden_id'];
-    $txt_edit_cname = $_POST['txt_edit_cname'];
-    $txt_edit_contact = $_POST['txt_edit_contact'];
+    $txt_edit_fname = $_POST['txt_edit_fname'];
+    $txt_edit_mname = $_POST['txt_edit_mname'];
+    $txt_edit_lname = $_POST['txt_edit_lname'];
     $txt_edit_address = $_POST['txt_edit_address'];
-    $txt_edit_sterm = $_POST['txt_edit_sterm'];
-    $txt_edit_eterm = $_POST['txt_edit_eterm'];
-    $txt_edit_captain = $_POST['txt_edit_captain'];
+    $txt_edit_cptfname = $_POST['txt_edit_cptfname'];
+    $txt_edit_cptmname = $_POST['txt_edit_cptmname'];
+    $txt_edit_cptlname = $_POST['txt_edit_cptlname'];
+    $txt_edit_contact = $_POST['txt_edit_pcontact'];
+    $txt_edit_uname = $_POST['txt_edit_uname'];
+    $txt_edit_pass = $_POST['txt_edit_pass'];
 
 
     if(isset($_SESSION['role'])){
-        $action = 'Update Official named '.$txt_edit_cname;
+        $action = 'Update Official named '.$txt_edit_lname.', '.$txt_edit_lname.' '.$txt_edit_cptmname;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
-    $update_query = mysqli_query($con,"UPDATE tblofficial set completeName = '".$txt_edit_cname."',
-        pcontact = '".$txt_edit_contact."',
+    $update_query = mysqli_query($con,"UPDATE tblofficial set 
+        fname = '".$txt_edit_fname."',
+        mname = '".$txt_edit_mname."',
+        lname = '".$txt_edit_lname."',
         paddress = '".$txt_edit_address."',
-        username = '".$txt_edit_sterm."',
-        password = '".$txt_edit_eterm."',
-        captain = '".$txt_edit_captain."'
+        cptfname = '".$txt_edit_cptfname."',
+        cptmname = '".$txt_edit_cptmname."',
+        cptlname = '".$txt_edit_cptlname."',
+        pcontact = '".$txt_edit_contact."',
+        username = '".$txt_edit_uname."',
+        password = '".$txt_edit_pass."'
         where id = '".$txt_id."'
         ") or die('Error: ' . mysqli_error($con));
 
@@ -59,6 +77,7 @@ if(isset($_POST['btn_save']))
         $_SESSION['edited'] = 1;
         header("location: ".$_SERVER['REQUEST_URI']);
     }
+    echo $update_query;
 }
 
 if(isset($_POST['btn_delete']))

@@ -98,17 +98,17 @@
                                                     echo '
                                                     <tr>
                                                         <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
-                                                        <td>'.$row['residentname'].'</td>
+                                                        <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                         <td>'.$row['barangay'].'</td>
                                                         <td>'.$row['businessName'].'</td>
                                                         <td>'.$row['businessAddress'].'</td>
                                                         <td>'.$row['typeOfBusiness'].'</td>
                                                         <td>'.$row['orNo'].'</td>
                                                         <td>₱ '.number_format($row['samount'],2).'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                         Edit</button>
 
-                                                        <a target="_blank" href="generate.php?resident='.$row['id'].'&permit='.$row['businessName'].'&barangayName='.$row['barangay'].'&businessAddress='.$row['businessAddress'].'&recordDate='.$row['dateRecorded'].'&val='.base64_encode($row['businessName'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
+                                                        <a target="_blank" href="generate.php?resident='.$row['pid'].'&permit='.$row['businessName'].'&barangayName='.$row['barangay'].'&businessAddress='.$row['businessAddress'].'&recordDate='.$row['dateRecorded'].'&val='.base64_encode($row['businessName'].'|'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 
@@ -122,7 +122,7 @@
                                                 {
                                                     echo '
                                                     <tr>
-                                                        <td>'.$row['residentname'].'</td>
+                                                        <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                         <td>'.$row['businessName'].'</td>
                                                         <td>'.$row['businessAddress'].'</td>
                                                         <td>'.$row['typeOfBusiness'].'</td>
@@ -227,7 +227,7 @@
                                                     echo '
                                                     <tr>
                                                         <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
-                                                        <td>'.$row['residentname'].'</td>
+                                                        <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                         <td>'.$row['businessName'].'</td>
                                                         <td>'.$row['businessAddress'].'</td>
                                                         <td>'.$row['typeOfBusiness'].'</td>
@@ -237,7 +237,7 @@
                                                         Edit</button>
 
                                                         <a target="_blank" href="generate.php?resident='.$row['pid'].'&permit='.$row['businessName'].'&barangayName='.$row['barangay'].'&businessAddress='.$row['businessAddress'].'&recordDate='.$row['dateRecorded'].'&qrdir='.$row['qrdir'].
-                                                        '&val='.base64_encode($row['businessName'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
+                                                        '&val='.base64_encode($row['businessName'].'|'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 
@@ -251,7 +251,7 @@
                                                 {
                                                     echo '
                                                     <tr>
-                                                        <td>'.$row['residentname'].'</td>
+                                                        <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                         <td>'.$row['businessName'].'</td>
                                                         <td>'.$row['businessAddress'].'</td>
                                                         <td>'.$row['typeOfBusiness'].'</td>

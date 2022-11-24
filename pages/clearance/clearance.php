@@ -36,7 +36,7 @@
                 <!-- Main content -->
                 <section class="content">
 
-                    <?php
+                <?php
                     if(($_SESSION['role'] == "Administrator") || isset($_SESSION['staff']))
                     {
                     ?>
@@ -80,8 +80,6 @@
                                                     <th>Barangay</th>
                                                     <th>Findings</th>
                                                     <th>Purpose</th>
-                                                    <th>OR Number</th>
-                                                    <th>Amount</th>
                                                     <th style="width: 15% !important;">Option</th>
                                                 </tr>
                                             </thead>
@@ -98,42 +96,16 @@
                                                         <tr>
                                                             <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
                                                             <td>'.$row['clearanceNo'].'</td>
-                                                            <td>'.$row['residentname'].'</td>
+                                                            <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                             <td>'.$row['barangay'].'</td>
                                                             <td>'.$row['findings'].'</td>
                                                             <td>'.$row['purpose'].'</td>
-                                                            <td>'.$row['orNo'].'</td>
-                                                            <td>₱ '.number_format($row['samount'],2).'</td>
-                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                            Edit</button>
-
-
-                                                            <a target="_blank" href="generate.php?resident='.$row['pid'].'&clearance='.$row['clearanceNo'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
+                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
+                                                            <a target="_blank" href="generate.php?resident='.$row['pid'].'&clearance='.$row['clearanceNo'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
-
 
                                                         include "edit_modal.php";
-                                                    }
-                                                }
-                                                else{
-                                                    $squery = mysqli_query($con, "SELECT * FROM tblclearance where status = 'Approved'") or die('Error: ' . mysqli_error($con));
-                                                    while($row = mysqli_fetch_array($squery))
-                                                    {
-                                                        echo '
-                                                        <tr>
-                                                            <td>'.$row['clearanceNo'].'</td>
-                                                            <td>'.$row['residentname'].'</td>
-                                                            <td>'.$row['findings'].'</td>
-                                                            <td>'.$row['purpose'].'</td>
-                                                            <td>'.$row['orNo'].'</td>
-                                                            <td>₱ '.number_format($row['samount'],2).'</td>
-                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-
-                                                            <a target="_blank" href="generate.php?resident='.$row['residentid'].'&clearance='.$row['clearanceNo'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
-                                                        </tr>
-                                                        ';
-                                                          include "edit_modal.php";
                                                     }
                                                 }
                                                 ?>
@@ -163,7 +135,7 @@
                             <?php include "function.php"; ?>
 
 
-                    </div>   <!-- /.row -->
+                    </div>
                     <?php
                     }
                     elseif($_SESSION['role'] == "Secretary")
@@ -207,9 +179,8 @@
                                                     <th>Resident Name</th>
                                                     <th>Findings</th>
                                                     <th>Purpose</th>
-                                                    <th>OR Number</th>
-                                                    <th>Amount</th>
-                                                    <th style="width: 15% !important;">Option</th>
+                                                    <th>Date Recorded</th>
+                                                    <th style="width: 20% !important;">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -225,16 +196,13 @@
                                                         <tr>
                                                             <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
                                                             <td>'.$row['clearanceNo'].'</td>
-                                                            <td>'.$row['residentname'].'</td>
+                                                            <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                             <td>'.$row['findings'].'</td>
                                                             <td>'.$row['purpose'].'</td>
-                                                            <td>'.$row['orNo'].'</td>
-                                                            <td>₱ '.number_format($row['samount'],2).'</td>
-                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                            Edit</button>
+                                                            <td>'.$row['dateRecorded'].'</td>
+                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
 
-
-                                                            <a target="_blank" href="generate.php?resident='.$row['pid'].'&clearance='.$row['clearanceNo'].'&barangayName='.$row['barangay'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
+                                                            <a target="_blank" href="generate.php?resident='.$row['pid'].'&clearance='.$row['clearanceNo'].'&barangayName='.$row['barangay'].'&secretaryid='.$row['recorderid'].'&barangayName='.$row['barangay'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'|'.$row['dateRecorded']).'" onclick="location.generate.php();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 
@@ -249,7 +217,7 @@
                                                         echo '
                                                         <tr>
                                                             <td>'.$row['clearanceNo'].'</td>
-                                                            <td>'.$row['residentname'].'</td>
+                                                            <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
                                                             <td>'.$row['findings'].'</td>
                                                             <td>'.$row['purpose'].'</td>
                                                             <td>'.$row['orNo'].'</td>
@@ -259,6 +227,7 @@
                                                             <a target="_blank" href="generate.php?resident='.$row['residentid'].'&clearance='.$row['clearanceNo'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
+
                                                         include "edit_modal.php";
                                                     }
                                                 }
@@ -468,7 +437,7 @@
     ?>
         $(function() {
             $("#table").dataTable({
-               "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,7 ] } ],"aaSorting": []
+               "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,6 ] } ],"aaSorting": []
             });
             $("#table1").dataTable({
                "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,3 ] } ],"aaSorting": []

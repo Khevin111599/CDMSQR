@@ -1,8 +1,7 @@
 <?php
 include('../../assets/plugins/phpqrcode/qrlib.php');
 
-/**
-if (!file_exists($pngAbsoluteFilePath)) {
+/**if (!file_exists($pngAbsoluteFilePath)) {
     QRcode::png($codeContents, $pngAbsoluteFilePath);
     echo 'File generated!';
     echo '<hr />';
@@ -16,10 +15,12 @@ echo '<hr />';
 
 // displaying
 echo '<img src="'.$urlRelativeFilePath.'" />';
-echo $visitLink; **/
+echo $visitLink; ***/
 
 if(isset($_POST['btn_add'])){
-    $ddl_resident = $_POST['ddl_resident'];
+    $ddl_resifname = $_POST['ddl_resifname'];
+    $ddl_resimname = $_POST['ddl_resimname'];
+    $ddl_resilname = $_POST['ddl_resilname'];
     $txt_busname = $_POST['txt_busname'];
     $txt_busadd = $_POST['txt_busadd'];
     $ddl_tob = $_POST['ddl_tob'];
@@ -44,14 +45,14 @@ if(isset($_POST['btn_add'])){
 
     if($_SESSION['role'] == "Administrator")
     {
-    $query = mysqli_query($con,"INSERT INTO tblpermit (residentname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,qrlink,qrdir,status)
-        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
+    $query = mysqli_query($con,"INSERT INTO tblpermit (resifname,resimname,resilname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,qrlink,qrdir,status)
+        values ('$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
         QRcode::png($visitLink, $pngAbsoluteFilePath);
     }
     else
     {
-      $query = mysqli_query($con,"INSERT INTO tblpermit (residentname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recorderid,recordedBy,qrlink,qrdir,status)
-        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['userid']."', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
+      $query = mysqli_query($con,"INSERT INTO tblpermit (resifname,resimname,resilname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recorderid,recordedBy,qrlink,qrdir,status)
+        values ('$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['userid']."', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
         QRcode::png($visitLink, $pngAbsoluteFilePath);
     }
     if($query == true)

@@ -1,11 +1,11 @@
 <?php
 if(isset($_POST['btn_add'])){
     $txt_cnum = $_POST['txt_cnum'];
-    $ddl_resident = $_POST['ddl_resident'];
+    $ddl_resifname = $_POST['ddl_resifname'];
+    $ddl_resimname = $_POST['ddl_resimname'];
+    $ddl_resilname = $_POST['ddl_reslnames'];
     $txt_findings = $_POST['txt_findings'];
     $txt_purpose = $_POST['txt_purpose'];
-    $txt_ornum = $_POST['txt_ornum'];
-    $txt_amount = $_POST['txt_amount'];
     $date = date('Y-m-d');
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
@@ -20,12 +20,12 @@ if(isset($_POST['btn_add'])){
 
     if($num_rows == 0){
         if($_SESSION['role'] == "Administrator"){
-        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,residentname,findings,purpose,orNo,samount,dateRecorded,recordedBy,status)
-            values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '$username','Approved')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,resifname,resimname,resilname,findings,purpose,dateRecorded,recordedBy,status)
+            values ('$txt_cnum','$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_findings','$txt_purpose', '$date', '$username','Approved')") or die('Error: ' . mysqli_error($con));
         }
         else{
-        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,residentname,findings,purpose,orNo,samount,dateRecorded,recorderid,recordedBy,status)
-            values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '$userid', '$username','New')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,resifname,resimname,resilname,findings,purpose,dateRecorded,recorderid,recordedBy,status)
+            values ('$txt_cnum','$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_findings','$txt_purpose', '$date', '$userid', '$username','New')") or die('Error: ' . mysqli_error($con));
         }
         if($query == true)
         {
@@ -39,49 +39,24 @@ if(isset($_POST['btn_add'])){
     }
 }
 
-if(isset($_POST['btn_req'])){
-    $chkblot = mysqli_query($con,"select * from tblresident where '".$_SESSION['userid']."' not in (select complainant from tblblotter)");
-    $num_row = mysqli_num_rows($chkblot);
-    if($num_row > 0)
-    {
-        $chk = mysqli_query($con,"select * from tblresident where id = '".$_SESSION['userid']."' ");
-        while($row = mysqli_fetch_array($chk)){
-
-            if($row['lengthofstay'] < 6){
-                $_SESSION['lengthofstay'] = 1;
-                header ("location: ".$_SERVER['REQUEST_URI']);
-            }
-            else{
-                $txt_purpose = $_POST['txt_purpose'];
-                $date = date('Y-m-d');
-                $reqquery = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status)
-                    values ('','".$_SESSION['userid']."','','$txt_purpose','','','$date','".$_SESSION['role']."','New') ")or die('Error: ' . mysqli_error($con));
-
-                if($reqquery == true)
-                {
-                    header ("location: ".$_SERVER['REQUEST_URI']);
-                }
-            }
-        }
-    }
-    else{
-        $_SESSION['blotter'] = 1;
-        header ("location: ".$_SERVER['REQUEST_URI']);
-    }
-}
-
-
 if(isset($_POST['btn_save']))
 {
     $txt_id = $_POST['hidden_id'];
     $txt_edit_cnum = $_POST['txt_edit_cnum'];
-    $txt_edit_name = $_POST['txt_edit_name'];
+    $txt_edit_fname = $_POST['txt_edit_fname'];
+    $txt_edit_mname = $_POST['txt_edit_mname'];
+    $txt_edit_lname = $_POST['txt_edit_lname'];
     $txt_edit_findings = $_POST['txt_edit_findings'];
     $txt_edit_purpose = $_POST['txt_edit_purpose'];
-    $txt_edit_ornum = $_POST['txt_edit_ornum'];
-    $txt_edit_amount = $_POST['txt_edit_amount'];
 
-    $update_query = mysqli_query($con,"UPDATE tblclearance set clearanceNo= '".$txt_edit_cnum."', residentname = '".$txt_edit_name."', findings = '".$txt_edit_findings."', purpose = '".$txt_edit_purpose."', orNo = '".$txt_edit_ornum."', samount = '".$txt_edit_amount."' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    $update_query = mysqli_query($con,"UPDATE tblclearance set 
+    clearanceNo= '".$txt_edit_cnum."', 
+    resifname = '".$txt_edit_fname."',
+    resimname = '".$txt_edit_mname."',
+    resilname = '".$txt_edit_lname."', 
+    findings = '".$txt_edit_findings."', 
+    purpose = '".$txt_edit_purpose."' 
+    where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if(isset($_SESSION['role'])){
         $action = 'Update Clearance with clearance number of '.$txt_edit_cnum;

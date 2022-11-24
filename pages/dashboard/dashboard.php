@@ -11,6 +11,7 @@ else
 {
   ob_start();
   include('../head_css.php'); ?>
+  
   <body class="skin-black">
     <!-- header logo: style can be found in header.less -->
     <?php
