@@ -3,8 +3,6 @@ if(isset($_POST['btn_add'])){
     $txt_cnum = $_POST['txt_cnum'];
     $ddl_resident = $_POST['ddl_resident'];
     $txt_findings = $_POST['txt_findings'];
-    $txt_ornum = $_POST['txt_ornum'];
-    $txt_option = $_POST['txt_option'];
     $date = date('Y-m-d');
 
     $chkdup = mysqli_query($con,"SELECT * from tblclearance where clearanceNo = ".$txt_cnum." ");
@@ -17,12 +15,12 @@ if(isset($_POST['btn_add'])){
 
     if($num_rows == 0){
         if($_SESSION['role'] == "Administrator"){
-        $query = mysqli_query($con,"INSERT INTO tblresidency (residencyNo,residentname,findings,RorNo,dateRecorded,recorderid,recordedBy,option)
-            values ('$txt_cnum','$ddl_resident', '$txt_findings', '$txt_ornum', '$date', '".$_SESSION['userid']."', '".$_SESSION['useroption']."','$txt_option')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblresidency (residencyNo,residentname,findings,dateRecorded,recorderid,recordedBy)
+            values ('$txt_cnum','$ddl_resident', '$txt_findings', '$date', '".$_SESSION['userid']."', '".$_SESSION['useroption']."')") or die('Error: ' . mysqli_error($con));
         }
         else{
-        $query = mysqli_query($con,"INSERT INTO tblresidency (residencyNo,residentname,findings,RorNo,dateRecorded,recorderid,recordedBy,option)
-            values ('$txt_cnum','$ddl_resident', '$txt_findings', '$txt_ornum', '$date', '".$_SESSION['userid']."', '".$_SESSION['useroption']."','$txt_option')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblresidency (residencyNo,residentname,findings,dateRecorded,recorderid,recordedBy)
+            values ('$txt_cnum','$ddl_resident', '$txt_findings', '$date', '".$_SESSION['userid']."', '".$_SESSION['useroption']."')") or die('Error: ' . mysqli_error($con));
         }
         if($query == true)
         {
@@ -73,10 +71,8 @@ if(isset($_POST['btn_save']))
     $txt_edit_cnum = $_POST['txt_edit_cnum'];
     $txt_edit_findings = $_POST['txt_edit_findings'];
     $txt_edit_name = $_POST['txt_edit_name'];
-    $txt_edit_ornum = $_POST['txt_edit_ornum'];
-    $txt_edit_amount = $_POST['txt_edit_amount'];
 
-    $update_query = mysqli_query($con,"UPDATE tblresidency set residencyNo= '".$txt_edit_cnum."', residentname= '".$txt_edit_name."', findings = '".$txt_edit_findings."', RorNo = '".$txt_edit_ornum."', option = '".$txt_edit_amount."' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    $update_query = mysqli_query($con,"UPDATE tblresidency set residencyNo= '".$txt_edit_cnum."', residentname= '".$txt_edit_name."', findings = '".$txt_edit_findings."' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if(isset($_SESSION['role'])){
         $action = 'Update Clearance with clearance number of '.$txt_edit_cnum;
@@ -95,7 +91,7 @@ if(isset($_POST['btn_delete']))
     {
         foreach($_POST['chk_delete'] as $value)
         {
-            $delete_query = mysqli_query($con,"DELETE from tblclearance where id = '$value' ") or die('Error: ' . mysqli_error($con));
+            $delete_query = mysqli_query($con,"DELETE from tblresidency where id = '$value' ") or die('Error: ' . mysqli_error($con));
 
             if($delete_query == true)
             {

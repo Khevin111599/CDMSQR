@@ -2,9 +2,8 @@
 
    echo  '<header class="header">
             <a href="#" class="logo">
-                Sta-Teresita System
+                Sta Rosa Tracking System
                 <img src="../../Picture/starosaico.png" style="height:100px; width:100px;"/>
-
         </header>'; ?>
 
 

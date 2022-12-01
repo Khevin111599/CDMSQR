@@ -16,6 +16,7 @@
 <script src="../../js/buttons.print.min.js" type="text/javascript"></script>
 
 <script src="../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../js/AdminLTE/app.js" type="text/javascript"></script>
 
@@ -29,6 +30,14 @@
 	            this.checked = checked;
 	        });
 	    });
+        if ($('.cbxMain:checked').length >= 1) { 
+            console.log("False");
+            $('#selectDel').prop("disabled", false);
+            }   
+        else {
+            console.log("True");
+            $('#selectDel').prop("disabled", true);
+} 
 	}
 
 	function success(){
@@ -48,6 +57,16 @@
         $('.alert-autocloseable-add').delay(3000).fadeOut( 'slow', function() {
             // Animation complete.
             $('#autoclosable-btn-add').prop('disabled', false);
+        });
+    }
+
+    function change_success(){
+        $('#autoclosable-btn-change').prop('disabled', true);
+        $('.alert-autocloseable-change').show();
+
+        $('.alert-autocloseable-change').delay(3000).fadeOut( 'slow', function() {
+            // Animation complete.
+            $('#autoclosable-btn-change').prop('disabled', false);
         });
     }
 

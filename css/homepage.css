@@ -3,6 +3,7 @@ body {
 	overflow-x: hidden;
 	color: #444444;
 	font-family: calibri;
+	background: url(Picture/mainbg.png) center/cover no-repeat;
 }
 .nav {
 	background-color: #2e4a62;
@@ -35,11 +36,15 @@ body {
 	width: auto;
 	height: auto;
 	overflow: hidden;
-	background: white;
+	
 	border-radius: 6px;
 	padding-bottom: 1%;
 	box-shadow: 0px 0px 50px rgba(0,0,0,.4);
-
+}
+.right::before {    
+	background: white;
+	position: absolute;
+	opacity: 0.5;
 }
 .banner {
 	width: auto;

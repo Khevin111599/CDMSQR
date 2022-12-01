@@ -17,7 +17,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Clearance #:</label>
-                                    <input name="txt_cnum" class="form-control input-sm" type="number" value="<?php echo $result['id'] ?>" placeholder="Clearance #" readOnly/>
+                                    <input name="txt_cnum" class="form-control input-sm" type="number" value="<?php echo $result['id'] + 1; ?>" placeholder="Clearance #" readOnly/>
                                 </div>
                                 <div class="form-group">
                                     <label>First Name:</label>

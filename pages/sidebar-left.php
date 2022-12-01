@@ -8,9 +8,8 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
 
-                        <div class="pull-left info" style= margin-top:80px;>
-                            <h4>Hello, '.$_SESSION['username'].'</h4>
-
+                        <div class="info" style = margin-top:80px;margin-left:30px;">
+                            <h3>'.$_SESSION['username'].'</h3>
                         </div>
                     </div>
                     <!-- /.search form -->
@@ -89,7 +88,7 @@
 														</a>
 												</li>
 												<li>
-														<a href="#">
+														<a href="../tracking/tracking.php">
 																<i class="fa fa-users"></i> <span>Tracking</span>
 														</a>
 												</li>

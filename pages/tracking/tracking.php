@@ -135,6 +135,100 @@ else
             <?php
           }
           ?>
+          <?php
+          if($_SESSION['role'] == "Secretary")
+          {
+            ?>
+
+            <div class="row">
+              <!-- left column -->
+              <div class="box">
+                <div class="box-header">
+                  <div style="padding:10px;">
+                    <?php
+                    if(!isset($_SESSION['staff']))
+                    {
+                      ?>
+                      <?php
+                    }
+                    ?>
+
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive">
+
+                  <form method="post">
+
+                    <div class="tab-content">
+                      <div id="approved" class="tab-pane active in">
+                        <table id="table" class="table table-bordered table-striped">
+                          <thead>
+                            <tr>
+                              <?php
+                              if(!isset($_SESSION['staff']))
+                              {
+                                ?>
+                                <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
+                                <?php
+                              }
+                              ?>
+                              <th>Resident</th>
+                              <th>Business Name</th>
+                              <th>Business Address</th>
+                              <th>Type of Business</th>
+                              <th>OR Number</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+
+                            if(!isset($_SESSION['staff']))
+                            {
+
+                              $squery = mysqli_query($con, "SELECT * FROM tblpermit where recorderid = '".$_SESSION['brgyid']."'") or die('Error: ' . mysqli_error($con));
+                              while($row = mysqli_fetch_array($squery))
+                              {
+                                echo '
+                                <tr>
+                                <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                <td>'.$row['resilname'].', '.$row['resifname'].' '.$row['resimname'].'</td>
+                                <td>'.$row['businessName'].'</td>
+                                <td>'.$row['businessAddress'].'</td>
+                                <td>'.$row['typeOfBusiness'].'</td>
+                                <td>'.$row['orNo'].'</td>
+                                <td>'.$row['status'].'</td>
+                                </tr>
+                                ';
+                                include "decision_modal.php";
+                              }
+                            }
+                            ?>
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+
+
+                  </form>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+
+              <?php include "../edit_notif.php"; ?>
+
+              <?php include "../added_notif.php"; ?>
+
+              <?php include "../delete_notif.php"; ?>
+
+
+              <?php include "function.php"; ?>
+
+
+            </div>
+            <?php
+          }
+          ?>
         </section><!-- /.content -->
       </aside><!-- /.right-side -->
     </div><!-- ./wrapper -->
@@ -148,7 +242,7 @@ else
     ?>
     $(function() {
       $("#table").dataTable({
-        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,7 ] } ],"aaSorting": []
+        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,6 ] } ],"aaSorting": []
       });
       $("#table1").dataTable({
         "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,4 ] } ],"aaSorting": []
@@ -162,7 +256,7 @@ else
     ?>
     $(function() {
       $("#table").dataTable({
-        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 6 ] } ],"aaSorting": []
+        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 4 ] } ],"aaSorting": []
       });
       $("#table1").dataTable({
         "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 3 ] } ],"aaSorting": []

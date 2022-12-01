@@ -17,7 +17,7 @@
     else
     {
     ob_start();
-    $_SESSION['clr'] = $_GET['clearance'];
+/**    $_SESSION['clr'] = $_GET['clearance']; */
     include('../head_css.php'); ?>
     <body class="skin-black" >
         <!-- header logo: style can be found in header.less -->
@@ -45,9 +45,9 @@
                         <p class="text-center" style="font-size: 20px; font-size:bold;">OFFICE OF THE BARANGAY CAPTAIN<br><b style="font-size: 28px;">BARANGAY RESIDENCY</b></p><br><br>
                         <p style="font-size: 18px;">TO WHOM IT MAY CONCERN:</p>
                         <p style="text-indent:40px;text-align: justify;">This is to certify that
-                       <?php $qry1=mysqli_query($con,"SELECT * from tblresident r left join tblresidency c on c.residentid = r.id where residentid = '".$_GET['resident']."' and residencyNo = '".$_GET['residency']."'");
+                       <?php $qry1=mysqli_query($con,"SELECT * from tblresidency where id = '".$_GET['resident']."' and residencyNo = '".$_GET['residency']."'");
                                 while($row1 = mysqli_fetch_array($qry1)){
-                        echo '<b>'.$row1['fname'].' '.$row1['mname'].' '.$row1['lname'].'</b>';
+                        echo '<b>'.$row1['residentname'].'</b>';
                         }
                         ?>
                      of legal age, married, Filipino citizen, whose specimensignature appears below, is a
@@ -72,17 +72,12 @@
                         
                 <div class="col-xs-offset-6 col-xs-5 col-md-offset-6 col-md-4" ><br><br><br>
                     <?php
-                    $qry = mysqli_query($con,"SELECT * from tblofficial");
-                    while($row=mysqli_fetch_array($qry)){
-                        i($row['sPosition'] == "Captain"){
-                            echo '
+                        echo '
                             <p>
-                            <b style="font-size:18px;">'.strtoupper($row['completeName']).'<br>
+                            <b style="font-size:18px;"><br>
                             <span style=" text-align: center;">Punong Barangay</span></b>
                             </p>
                             ';
-                        }
-                    }
                     ?>
                 </div>
                 

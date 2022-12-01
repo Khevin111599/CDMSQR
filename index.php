@@ -21,7 +21,8 @@ include('pages/connection.php');
 				}else{
 					$_SESSION['role'] = $loggedinuser['sPosition'];
 					$_SESSION['userid'] = $loggedinuser['id'];
-					$_SESSION['username'] = $loggedinuser['lname'].', '.$loggedinuser['fname'].' '.$loggedinuser['mname'];
+					$_SESSION['username'] = $loggedinuser['paddress'];
+					$_SESSION['brgyid'] = $loggedinuser['id'];
 					echo "<script>alert('Welcome.');</script>";
 					header ('location: pages/dashboard/dashboard.php');
 				}
@@ -40,15 +41,14 @@ include('pages/connection.php');
 		<a href="about.php">about</a>
 	</div>
 </div>
-<body>
+<body style="background-image: url('Picture/mainbg.png');">
 <div class="form-group align-middle" style="padding-top:50px;">
 	<div class="form-group col-md-8 col-md-offset-2">
 		<center><h1>CENTRALIZED DOCUMENT MANAGEMENT AND <br/> TRACKING WITH QR CODE INTEGRATION</h1></center>
 	</div>
-	<div class="form-group col-md-4 col-md-offset-4">
-		<div class="right" >
-			<section class="banner">Sign In</section> </br> </br>
-			<Center><img src="Picture/sta_rosa.png" height="100" width="100" ></center>
+	<div class="form-group col-md-4 col-md-offset-4" >
+		<div class="right" style="padding-top:20px;">
+			<Center><img src="Picture/starosaico.png" height="150" width="150" ></center>
 			<form method="POST">
 				<input type="text" name="txt_username" required autofocus placeholder="Enter Username">
 				<input type="password" name="txt_password" required autofocus placeholder="Enter Password">

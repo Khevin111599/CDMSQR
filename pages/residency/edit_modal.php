@@ -12,7 +12,7 @@
                 <input type="hidden" value="'.$row['id'].'" name="hidden_id" id="hidden_id"/>
                 <div class="form-group">
                     <label>Clearance #: </label>
-                    <input name="txt_edit_cnum" class="form-control input-sm" type="text" value="'.$row['residencyNo'].'" />
+                    <input name="txt_edit_cnum" class="form-control input-sm" type="text" value="'.$row['residencyNo'].'" readOnly/>
                 </div>
                 <div class="form-group">
                     <label>Resident: </label>
@@ -21,14 +21,6 @@
                 <div class="form-group">
                     <label>Findings : </label>
                     <input name="txt_edit_findings" class="form-control input-sm" type="text" value="'.$row['findings'].'" />
-                </div>
-                <div class="form-group">
-                    <label>OR Number : </label>
-                    <input name="txt_edit_ornum" class="form-control input-sm" type="text" value="'.$row['RorNo'].'" />
-                </div>
-                <div class="form-group">
-                    <label>Amount : </label>
-                    <input name="txt_edit_amount" class="form-control input-sm" type="text" value="'.$row['option'].'" />
                 </div>
             </div>
         </div>

@@ -80,7 +80,7 @@ else
                               <th>Residency #</th>
                               <th>Resident Name</th>
                               <th>Findings</th>
-                              <th>OR Number</th>
+
                               <th style="width: 15% !important;">Option</th>
                             </tr>
                           </thead>
@@ -207,7 +207,6 @@ else
                               <th>Residency #</th>
                               <th>Resident Name</th>
                               <th>Findings</th>
-                              <th>OR Number</th>
                               <th style="width: 15% !important;">Option</th>
                             </tr>
                           </thead>
@@ -227,7 +226,6 @@ else
                                 <td>'.$row['residentname'].'</td>
                                 <td>'.$row['findings'].'</td>
 
-                                <td>'.$row['RorNo'].'</td>
 
                                 <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 Edit</button>
@@ -254,7 +252,6 @@ else
                                 <td>'.$row['residentname'].'</td>
                                 <td>'.$row['findings'].'</td>
 
-                                <td>'.$row['orNo'].'</td>
 
                                 <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
 
@@ -385,7 +382,7 @@ else
     ?>
     $(function() {
       $("#table").dataTable({
-        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,7 ] } ],"aaSorting": []
+        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,4 ] } ],"aaSorting": []
       });
       $("#table1").dataTable({
         "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0,3 ] } ],"aaSorting": []
@@ -398,7 +395,7 @@ else
     ?>
     $(function() {
       $("#table").dataTable({
-        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 6 ] } ],"aaSorting": []
+        "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 5 ] } ],"aaSorting": []
       });
       $("#table1").dataTable({
         "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 2 ] } ],"aaSorting": []

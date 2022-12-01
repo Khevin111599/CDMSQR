@@ -31,9 +31,19 @@ else
           <h1>
             Dashboard
           </h1>
+          <div class="form-group">
+            <button class="btn btn-primary btn-sm" style="float:right;" data-target="#addModal" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Password</button>
+          </div>
+          <?php
+          include 'changeModal.php';
+          include 'function.php';
+          include "../duplicate_error.php";
+          include "../edit_notif.php";
+          ?>
+          
 
         </section>
-
+  
         <!-- Main content -->
         <section class="content">
           <div class="row">
