@@ -1,44 +1,26 @@
-<?php echo '<div id="editModal'.$row['pid'].'" class="modal fade">
+<?php echo '<div id="editModal'.$row['id'].'" class="modal fade">
 <form method="post">
   <div class="modal-dialog modal-sm" style="width:300px !important;">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Edit Permit</h4>
+            <h4 class="modal-title">Edit Clearance</h4>
         </div>
         <div class="modal-body">
         <div class="row">
             <div class="col-md-12">
-                <input type="hidden" value="'.$row['pid'].'" name="hidden_id" id="hidden_id"/>
+                <input type="hidden" value="'.$row['id'].'" name="hidden_id" id="hidden_id"/>
+                <div class="form-group">
+                    <label>Clearance #: </label>
+                    <input name="txt_edit_cnum" class="form-control input-sm" type="text" value="'.$row['residencyNo'].'" readOnly/>
+                </div>
                 <div class="form-group">
                     <label>Resident: </label>
-                    <input class="form-control input-sm" type="text" value="'.$row['residentname'].'" readonly/>
+                    <input name="txt_edit_name" class="form-control input-sm" type="text" value="'.$row['residentName'].'"/>
                 </div>
                 <div class="form-group">
-                    <label>Business Name: </label>
-                    <input name="txt_edit_busname" class="form-control input-sm" type="text" value="'.$row['businessName'].'"/>
-                </div>
-                <div class="form-group">
-                    <label>Business Address : </label>
-                    <input name="txt_edit_busadd" class="form-control input-sm" type="text" value="'.$row['businessAddress'].'" />
-                </div>
-                <div class="form-group">
-                    <label>Type of Business:</label>
-                    <select name="ddl_edit_tob" class="form-control input-sm">
-                        <option value="'.$row['typeOfBusiness'].'" selected>'.$row['typeOfBusiness'].'</option>
-                        <option value="Sole Proprietorship">Sole Proprietorship</option>
-                        <option value="Partnership">Partnership</option>
-                        <option value="Corporation">Corporation</option>
-                                    </select>                                    
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>OR Number : </label>
-                    <input name="txt_edit_ornum" class="form-control input-sm" type="text" value="'.$row['orNo'].'" />
-                </div>
-                <div class="form-group">
-                    <label>Amount : </label>
-                    <input name="txt_edit_amount" class="form-control input-sm" type="text" value="'.$row['samount'].'" />
+                    <label>Findings : </label>
+                    <input name="txt_edit_findings" class="form-control input-sm" type="text" value="'.$row['findings'].'" />
                 </div>
             </div>
         </div>

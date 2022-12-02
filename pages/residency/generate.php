@@ -26,7 +26,7 @@
         include "../connection.php";
         ?>
        
-        <div class="col-xs-12 col-sm-6 col-md-8" style="" >
+        <div class="col-xs-12 col-sm-6 col-md-8">
             <div style=" background: black;" >
                 <div class="col-xs-4 col-sm-6 col-md-3" style="background: white; margin-right:0px;">
                     <center><image src="../../Picture/Sta.Teresita.png" style="width:75%;height:150px;"/></center>
@@ -37,7 +37,7 @@
                         Republic of the Philippines<br>
                         Municipality of Santa Rosa<br>
                         Province of Nueva Ecija<br>
-                        BARANGAY Sta.Teresita<br>
+                        BARANGAY <?php echo $_GET['paddress'];?><br>
                         <br></b></center> <br> <br> <br>
                     </div>
                     
@@ -45,14 +45,14 @@
                         <p class="text-center" style="font-size: 20px; font-size:bold;">OFFICE OF THE BARANGAY CAPTAIN<br><b style="font-size: 28px;">BARANGAY RESIDENCY</b></p><br><br>
                         <p style="font-size: 18px;">TO WHOM IT MAY CONCERN:</p>
                         <p style="text-indent:40px;text-align: justify;">This is to certify that
-                       <?php $qry1=mysqli_query($con,"SELECT * from tblresidency where id = '".$_GET['resident']."' and residencyNo = '".$_GET['residency']."'");
+                       <?php $qry1=mysqli_query($con,"SELECT * from tblresidency where residencyNo = '".$_GET['residency']."' and residencyNo = '".$_GET['residency']."'");
                                 while($row1 = mysqli_fetch_array($qry1)){
                         echo '<b>'.$row1['residentname'].'</b>';
                         }
                         ?>
-                     of legal age, married, Filipino citizen, whose specimensignature appears below, is a
+                     of legal age, married, Filipino citizen, whose specimen signature appears below, is a
                     <b>PERMANENT RESIDENT</b>
-                    of this Barangay Sta,Teresita, Santa Rosa, Nueva Ecija..</p>
+                    of this Barangay <?php echo $_GET['paddress'];?>, Santa Rosa, Nueva Ecija..</p>
                     <br> &nbsp &nbsp &nbsp &nbsp &nbsp
                      Based on records of this office, she has been residing at Barangay Sta,Teresita, Santa Rosa, Nueva Ecija.
                      <br> &nbsp &nbsp &nbsp &nbsp &nbsp
@@ -61,7 +61,7 @@
                     is being issued upon the request of the above-namedperson for whatever legal purpose it may serve.
                     <br> &nbsp &nbsp &nbsp &nbsp &nbsp
                     Issued this __
-                    day of __________, ____ at Barangay Sta,Teresita, Santa Rosa, Nueva Ecija, Philippines.
+                    day of __________, ____ at Barangay<?php echo $_GET['paddress'];?>, Santa Rosa, Nueva Ecija, Philippines.
   
                     </div>  
 
@@ -74,7 +74,7 @@
                     <?php
                         echo '
                             <p>
-                            <b style="font-size:18px;"><br>
+                            <b style="font-size:18px;">'.$_GET['cptname'].'<br>
                             <span style=" text-align: center;">Punong Barangay</span></b>
                             </p>
                             ';

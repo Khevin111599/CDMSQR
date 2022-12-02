@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-5 col-xs-4" style="float:left;margin-top: -1px;">
 
-                    <image src="../../Picture/Clearance.png" style="width:75%;height:150px;"/>
+                    <image src="<?php echo $_GET["qrdir"] ?>" style="width:75%;height:150px;"/>
                     </div>
                     <div class="col-md-5 col-xs-4" style="float:right;margin-top: -160px;">
                     	<br><br><br>
@@ -70,11 +70,9 @@
                         </div><br>
                         <p>Tax Payer's Signature</p>
                         <?php
-                        $result = mysqli_query($con,"SELECT * from tblofficial where id = '".$_GET['secretaryid']."'");
-                        $captainName = mysqli_fetch_assoc($result);
                                 echo '
                                 <p>
-                                <b style="font-size:18px;">'.strtoupper($captainName['captain']).'<br>
+                                <b style="font-size:18px;">'.strtoupper($_GET["cptname"]).'<br>
                                 <span>Punong Barangay</span></b>
                                 </p>
                                 ';

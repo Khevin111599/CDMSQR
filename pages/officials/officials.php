@@ -47,7 +47,7 @@ else
                   if(!isset($_SESSION['staff']))
                   {
                     ?>
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" id="btndelete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                    <button class="btn btn-danger btn-sm" id="selectDel" data-toggle="modal" data-target="#deleteModal" id="btndelete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                     <?php
                   }
                   ?>
@@ -71,7 +71,7 @@ else
                         <th>Image</th>
                         <th>Name</th>
                         <th>Contact</th>
-                        <th>Address</th>
+                        <th>Barangay</th>
                         <th>Username</th>
                         <th style="width:80px;">Password</th>
                         <th>Captain</th>
@@ -162,6 +162,23 @@ else
     <?php
   }
   ?>
+
+$(document).ready(function(){
+    $('#selectDel').prop("disabled", true);
+    $('tbody').click(function () {
+
+if ($('.chk_delete:checked').length >= 1) { 
+    console.log("False");
+    $('#selectDel').prop("disabled", false);
+    }
+else {
+    console.log("True");
+    $('#selectDel').prop("disabled", true);
+} 
+
+});
+
+});
 </script>
 </body>
 </html>

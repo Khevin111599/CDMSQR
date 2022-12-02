@@ -29,7 +29,7 @@
                                 </a>
                             </li>
 														<li>
-                                <a href="#">
+                                <a href="../tracking/tracking.php">
                                     <i class="fa fa-users"></i> <span>Tracking</span>
                                 </a>
                             </li>
@@ -110,7 +110,7 @@
 																</a>
 												<li>
 																<li>
-																&nbsp &nbsp <a href="../clearance/clearance.php">&nbsp
+																&nbsp &nbsp <a href="../indigency/indigency.php">&nbsp
 																<i class="fa fa-file">&nbsp </i> Barangay Indigency</a>
 																</a>
 												<li>

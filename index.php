@@ -11,7 +11,7 @@ include('pages/connection.php');
 				if($loggedinuser['sPosition'] == 'Administrator'){
 					$_SESSION['role'] = $loggedinuser['sPosition'];
 					$_SESSION['userid'] = $loggedinuser['id'];
-					$_SESSION['username'] = $loggedinuser['lname'].', '.$loggedinuser['fname'].' '.$loggedinuser['mname'];
+					$_SESSION['username'] = $loggedinuser['fname'];
 					header ('location: pages/dashboard/dashboard.php');
 				}elseif($loggedinuser['sPosition'] == 'Mayor Secretary'){
 					$_SESSION['role'] = $loggedinuser['sPosition'];
@@ -22,6 +22,7 @@ include('pages/connection.php');
 					$_SESSION['role'] = $loggedinuser['sPosition'];
 					$_SESSION['userid'] = $loggedinuser['id'];
 					$_SESSION['username'] = $loggedinuser['paddress'];
+					$_SESSION['secName'] = $loggedinuser['lname'].', '.$loggedinuser['fname'].' '.$loggedinuser['mname'];
 					$_SESSION['brgyid'] = $loggedinuser['id'];
 					echo "<script>alert('Welcome.');</script>";
 					header ('location: pages/dashboard/dashboard.php');

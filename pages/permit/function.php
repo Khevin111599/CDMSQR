@@ -31,7 +31,7 @@ if(isset($_POST['btn_add'])){
     $localIP = getHostByName(getHostName());
     $tempDir = "image/";
 
-    $visitLink = $localIP.'/trackingsystem/tracking/statustracking.php?qrcode='.$txt_ornum;
+    $visitLink = $localIP.'/trackingsystem/tracking/statustracking.php?qrcode='.'BP'.$txt_ornum;
     $fileName = ''.md5($txt_ornum).'.png';
 
     $pngAbsoluteFilePath = $tempDir.$fileName;
@@ -52,7 +52,7 @@ if(isset($_POST['btn_add'])){
     else
     {
       $query = mysqli_query($con,"INSERT INTO tblpermit (resifname,resimname,resilname,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recorderid,recordedBy,qrlink,qrdir,status)
-        values ('$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['userid']."', '".$_SESSION['username']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
+        values ('$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['userid']."', '".$_SESSION['secName']."','$visitLink','$urlRelativeFilePath','Pending')") or die('Error: ' . mysqli_error($con));
         QRcode::png($visitLink, $pngAbsoluteFilePath);
     }
     if($query == true)

@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label>Type of Business:</label>
-                                    <select name="ddl_tob" class="form-control input-sm">
+                                    <select name="ddl_tob" class="form-control input-sm" required>
                                         <option selected="" disabled="">-- Select Type of Business -- </option>
                                         <option value="Sari Sari Store">Sari Sari Store</option>
                                         <option value="Convenience Store">Convenience Store</option>
@@ -45,11 +45,11 @@
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>OR Number:</label>
-                                    <input name="txt_ornum" class="form-control input-sm" type="number" onkeydown="return event.keyCode !== 69" placeholder="OR Number"/>
+                                    <input name="txt_ornum" class="form-control input-sm" type="number" onkeydown="return event.keyCode !== 69" placeholder="OR Number" required/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Amount:</label>
-                                    <input name="txt_amount" class="form-control input-sm" type="number" onkeydown="return event.keyCode !== 69" placeholder="Amount"/>
+                                    <input name="txt_amount" class="form-control input-sm" type="number" onkeydown="return event.keyCode !== 69" placeholder="Amount" required/>
                                 </div>
                                 </div>
                             </div>

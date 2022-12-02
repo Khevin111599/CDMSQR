@@ -1,3 +1,7 @@
+<?php
+  $squery = mysqli_query($con, "SELECT id FROM tblindigency ORDER BY id DESC LIMIT 1");
+  $result = mysqli_fetch_array($squery);
+?>
 <!-- ========================= MODAL ======================= -->
             <div id="addModal" class="modal fade">
             <form method="post">
@@ -5,58 +9,31 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Manage Permit Clearance</h4>
+                        <h4 class="modal-title">Manage Indigency</h4>
                     </div>
                     <div class="modal-body">
-                        
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Resident:</label>
-                                    <select name="ddl_resident" class="select2 form-control input-sm" style="width:100%;">
-                                        <option selected="" disabled="">-- Select Resident -- </option>
-                                        <?php
-                                            $squery = mysqli_query($con,"SELECT r.id,r.lname,r.fname,r.mname from tblresident r where ((r.id not in (select personToComplain from tblblotter)) or (r.id in (select personToComplain from tblblotter where sStatus = 'Solved')) ) and lengthofstay >= 6");
-                                            while ($row = mysqli_fetch_array($squery)){
-                                                echo '
-                                                    <option value="'.$row['id'].'">'.$row['lname'].', '.$row['fname'].' '.$row['mname'].'</option>    
-                                                ';
-                                            }
-                                        ?>
-                                    </select>
+                                    <label>Indigency #:</label>
+                                    <input name="txt_cnum" class="form-control input-sm" type="number" value="<?php echo $result['id'] + 1; ?>" placeholder="Clearance #"/ readOnly>
                                 </div>
                                 <div class="form-group">
-                                    <label>Business Name:</label>
-                                    <input name="txt_busname" class="form-control input-sm" type="text" placeholder="Business Name"/>
+                                    <label>Resident Name:</label>
+                                    <input name="ddl_resident" class="form-control input-sm" type="text" placeholder="Resident Name" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label>Business Address:</label>
-                                    <input name="txt_busadd" class="form-control input-sm" type="text" placeholder="Business Address"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>Type of Business:</label>
-                                    <select name="ddl_tob" class="form-control input-sm">
-                                        <option selected="" disabled="">-- Select Type of Business -- </option>
-                                        <option value="Sole Proprietorship">Sole Proprietorship</option>
-                                        <option value="Partnership">Partnership</option>
-                                        <option value="Corporation">Corporation</option>
-                                    </select>                                    
-                                </div>
-                                <div class="form-group">
-                                    <label>OR Number:</label>
-                                    <input name="txt_ornum" class="form-control input-sm" type="number" placeholder="OR Number"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>Amount:</label>
-                                    <input name="txt_amount" class="form-control input-sm" type="number" placeholder="Amount"/>
+                                    <label>Findings:</label>
+                                    <input name="txt_findings" class="form-control input-sm" type="text" placeholder="Findings" required/>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default btn-sm" data-dismiss="modal" value="Cancel"/>
-                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" value="Add Permit"/>
+                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" value="Add Clearance"/>
                     </div>
                 </div>
               </div>

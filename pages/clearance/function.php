@@ -1,4 +1,5 @@
 <?php
+include('../../assets/plugins/phpqrcode/qrlib.php');
 if(isset($_POST['btn_add'])){
     $txt_cnum = $_POST['txt_cnum'];
     $ddl_resifname = $_POST['ddl_resifname'];
@@ -9,6 +10,16 @@ if(isset($_POST['btn_add'])){
     $date = date('Y-m-d');
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
+    $secName = $_SESSION['secName'];
+
+    $localIP = getHostByName(getHostName());
+    $tempDir = "image/";
+
+    $visitLink = $localIP.'/trackingsystem/tracking/statustracking.php?qrcode='.'CL'.$txt_cnum;
+    $fileName = ''.md5($txt_cnum).'.png';
+
+    $pngAbsoluteFilePath = $tempDir.$fileName;
+    $urlRelativeFilePath = $tempDir.$fileName;
 
     $chkdup = mysqli_query($con,"SELECT * from tblclearance where clearanceNo = ".$txt_cnum." ");
     $num_rows = mysqli_num_rows($chkdup);
@@ -20,12 +31,14 @@ if(isset($_POST['btn_add'])){
 
     if($num_rows == 0){
         if($_SESSION['role'] == "Administrator"){
-        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,resifname,resimname,resilname,findings,purpose,dateRecorded,recordedBy,status)
-            values ('$txt_cnum','$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_findings','$txt_purpose', '$date', '$username','Approved')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,resifname,resimname,resilname,findings,purpose,dateRecorded,recordedBy,qrlink,qrdir,status)
+            values ('$txt_cnum','$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_findings','$txt_purpose', '$date', '$username','$visitLink','$urlRelativeFilePath','Released')") or die('Error: ' . mysqli_error($con));
+            QRcode::png($visitLink, $pngAbsoluteFilePath);
         }
         else{
-        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,resifname,resimname,resilname,findings,purpose,dateRecorded,recorderid,recordedBy,status)
-            values ('$txt_cnum','$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_findings','$txt_purpose', '$date', '$userid', '$username','New')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,resifname,resimname,resilname,findings,purpose,dateRecorded,recorderid,recordedBy,qrlink,qrdir,status)
+            values ('$txt_cnum','$ddl_resifname','$ddl_resimname','$ddl_resilname', '$txt_findings','$txt_purpose', '$date', '$userid', '$secName','$visitLink','$urlRelativeFilePath','Released')") or die('Error: ' . mysqli_error($con));
+            QRcode::png($visitLink, $pngAbsoluteFilePath);
         }
         if($query == true)
         {
